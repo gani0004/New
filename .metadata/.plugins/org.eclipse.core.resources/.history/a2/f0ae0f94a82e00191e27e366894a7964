@@ -1,0 +1,20 @@
+package com.AutoIt;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class AutoItHandleWindows {
+
+	public static void main(String[] args) 
+	{
+		WebDriver driver=null;
+		System.setProperty("webdriver.chrome.driver", "E:\\Automation\\SeleniumAUT\\Testing\\BrowserDrivers\\chromedriver.exe");
+		driver.get("https://imgur.com/upload");
+		driver.findElement(By.xpath("//*[@id=\'upload-modal\']/div[2]/div[2]/label")).click();
+		
+		
+		
+
+	}
+
+}

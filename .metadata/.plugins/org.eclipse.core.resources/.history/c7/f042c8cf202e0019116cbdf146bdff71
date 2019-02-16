@@ -1,0 +1,77 @@
+package com.MavenProject.New;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class ToursLoginTest {
+
+	public static Logger Log=Logger.getLogger("ToursLoginTest");//Logger is from Apache log4j.logger
+	WebDriver driver=null;
+	String url="http://newtours.demoaut.com/";
+	
+	@BeforeTest
+	public void Setup() throws IOException
+	{
+		PropertyConfigurator.configure("log4j.properties");
+		System.setProperty("webdriver.chrome.driver", "./src/test/java/com/excelData/chromedriver.exe");
+		driver=new ChromeDriver();
+		Log.info("succssfully open chrome");
+		driver.get(url);
+		Log.info("successfully navigate to application");
+		
+	}
+	@Test
+	public void Login() throws IOException
+	{
+		FileInputStream file=new FileInputStream("./src/test/java/com/excelData/LoginData.xlsx");
+		XSSFWorkbook workbook=new XSSFWorkbook(file);
+		XSSFSheet sheet=workbook.getSheet("Sheet1");
+		int rowCount=sheet.getLastRowNum();
+		for(int i=1;i<=rowCount;i++)
+		{
+			XSSFRow r=sheet.getRow(i);
+			driver.findElement(By.name("userName")).sendKeys(r.getCell(0).getStringCellValue());
+			driver.findElement(By.name("password")).sendKeys(r.getCell(1).getStringCellValue());
+			driver.findElement(By.name("login")).click();
+			try {
+				String expected="Find a flight" ;
+				String Actual =driver.getTitle();
+				if(Actual.contains(expected)) {
+					Log.info("successfuly login -PASS");
+					r.createCell(2).setCellValue("successfuly login -PASS");
+				}
+				}catch(Exception e){if(driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[3]/td/p/font")).getText().contains("you don't have a log-in"));
+				File screenshot=((TakesScreenshot)driver). getScreenshotAs(OutputType.FILE);
+				FileUtils.copyFile(screenshot, new File("./Screenshots/LoginFail.png"));
+				Log.info("Login fail -FAIL");
+				r.createCell(2).setCellValue("Login fail -FAIL");
+			}
+			FileOutputStream file1=new FileOutputStream("./src/test/java/com/excelData/LoginResult.xlsx");
+			workbook.write(file1);
+		}
+		
+	}
+			@AfterTest
+			public void tearDown()
+			{
+				driver.close();
+			}
+}

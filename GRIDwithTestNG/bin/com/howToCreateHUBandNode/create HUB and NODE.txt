@@ -1,0 +1,16 @@
+Selenium GRID
+Steps to create hub
+1> open cmd
+2> cd desktop(selenium server stanalone jar file should be there on desktop)
+3> java -jar selenium........jar -role hub
+4> After entering hub will be created with ip address
+Note:-Port 6575(to change default port no add at the END of 3 statement in both hub and node)
+Note:Open browser enter ip address of hub:port no we observed nodes are registered or not
+
+steps to create node
+1> open cmd
+2> cd desktop(selenium server stanalone jar file and ChromeDriver.exe file should be there on desktop)
+3> java -jar -Dwebdriver.chrome.driver=C:\ChromeDriver.exe selenium server.....jar -role webdriver -hub http://192.143.3.3:4444/grid/register
+Note:chrome driver.exe file shoude be desktop and IP address of hub should be entered
+
+note:both cmd should be open

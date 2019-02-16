@@ -1,0 +1,19 @@
+package com.QnetLogin.RealTime;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args ) throws FileNotFoundException
+    {
+    	FileInputStream file=new FileInputStream("./src/test/java/com/excelData/LoginData.xlsx");
+    	
+    }
+}

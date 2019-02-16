@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="49914" started-at="2019-02-07T10:49:08Z" finished-at="2019-02-07T10:49:58Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="49914" started-at="2019-02-07T10:49:08Z" finished-at="2019-02-07T10:49:58Z">
+      <class name="com.NewTourTestScript.HomePageTesting">
+        <test-method status="PASS" signature="SetUP()[pri:0, instance:com.NewTourTestScript.HomePageTesting@480bdb19]" name="SetUP" is-config="true" duration-ms="34400" started-at="2019-02-07T10:49:08Z" finished-at="2019-02-07T10:49:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SetUP -->
+        <test-method status="PASS" signature="HomePageTest()[pri:0, instance:com.NewTourTestScript.HomePageTesting@480bdb19]" name="HomePageTest" duration-ms="14749" started-at="2019-02-07T10:49:42Z" finished-at="2019-02-07T10:49:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HomePageTest -->
+        <test-method status="PASS" signature="TearDown()[pri:0, instance:com.NewTourTestScript.HomePageTesting@480bdb19]" name="TearDown" is-config="true" duration-ms="711" started-at="2019-02-07T10:49:57Z" finished-at="2019-02-07T10:49:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+      </class> <!-- com.NewTourTestScript.HomePageTesting -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

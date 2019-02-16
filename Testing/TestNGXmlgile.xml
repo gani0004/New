@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="fb login">
+<test name="qnet login test">
+<classes>
+<class name="com.TestNGAnnoations.NewUserRegistration"/>
+</classes>
+</test>
+
+<test name="tours User Regidtration">
+<classes>
+<class name="com.TestNGAnnoations.SignInFb"/>
+</classes>
+</test>
+</suite>
